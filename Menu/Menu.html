@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Restaurant Menu</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Georgia", serif;
+        scroll-behavior: smooth;
+    }
+    title{
+        font-size: 48px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        background: rgba(255, 0, 0, 0.6);
+        padding: 15px 40px;
+        border-radius: 10px;
+        text-align: center;
+
+    }
+
+    section {
+        height: 100vh;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 48px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        background: rgba(0,0,0,0.6);
+        padding: 15px 40px;
+        border-radius: 10px;
+    }
+    h2{font-size: 48px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        background: rgba(213, 104, 104, 0.6);
+        padding: 15px 40px;
+        border-radius: 10px;
+        background-color: aqua;
+    }
+
+    .menu-items {
+        background: rgba(0,0,0,0.65);
+        padding: 30px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+    }
+
+    .menu-items p {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        border-bottom: 1px dashed #aaa;
+        padding: 8px 0;
+        margin: 0;
+    }
+
+    .menu-items p:last-child {
+        border-bottom: none;
+    }
+
+    /* Background Images */
+    #starters {
+        background-image: url("starters.jpg");
+    }
+
+    #continental {
+        background-image: url("continental.jpg");
+    }
+
+    #maincourse {
+        background-image: url("maincourse.jpg");
+    }
+
+    #desserts {
+        background-image: url("desserts.jpg");
+    }
+
+    #beverages {
+        background-image: url("beverages.jpg");
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Starters Page -->
+<div class ="title"><h2 style="text-align: center;">Highs Cafe</h2>
+
+<section id="starters">
+    
+    <h1>Starters</h1>
+    <div class="menu-items">
+        <p><span>French Fries</span><span>₹120</span></p>
+        <p><span>Garlic Bread</span><span>₹150</span></p>
+        <p><span>Veg Nuggets</span><span>₹180</span></p>
+        <p><span>Fish Fingers</span><span>₹280</span></p>
+        <p><span>Fish N Chips</span><span>₹350</span></p>
+        <p><span>Chicken Pops</span><span>₹380</span></p>
+    </div>
+</section>
+
+<!-- Continental Page -->
+<section id="continental">
+    <h1>Continental</h1>
+    <div class="menu-items">
+        <p><span>Grilled Salmon</span><span>₹420</span></p>
+        <p><span>Lasagna</span><span>₹340</span></p>
+        <p><span>Mashed Potatoes Stu</span><span>₹560</span></p>
+        <p><span>Pizza</span><span>₹480</span></p>
+        <p><span>Burgers</span><span>₹280</span></p>
+    </div>
+</section>
+
+<!-- Main Course Page -->
+<section id="maincourse">
+    <h1>Main Course</h1>
+    <div class="menu-items">
+        <p><span>Paneer Butter Masala</span><span>₹280</span></p>
+        <p><span>Grilled Chicken</span><span>₹350</span></p>
+        <p><span>Fried Rice</span><span>₹160</span></p>
+        <p><span>Naan</span><span>₹60</span></p>
+        <p><span>Roti</span><span>₹30</span></p>
+        <p><span>Chole Bahute</span><span>₹260</span></p>
+    </div>
+</section>
+
+<!-- Desserts Page -->
+<section id="desserts">
+    <h1>Desserts</h1>
+    <div class="menu-items">
+        <p><span>Chocolate Brownie</span><span>₹150</span></p>
+        <p><span>Ice Cream</span><span>₹120</span></p>
+        <p><span>Cheesecake</span><span>₹180</span></p>
+    </div>
+</section>
+
+<!-- Beverages Page -->
+<section id="beverages">
+    <h1>Beverages</h1>
+    <div class="menu-items">
+        <p><span>Cold Coffee</span><span>₹120</span></p>
+        <p><span>Fresh Lime Soda</span><span>₹90</span></p>
+        <p><span>Mocktail</span><span>₹160</span></p>
+    </div>
+</section>
+
+</body>
+</html>
