@@ -1,0 +1,97 @@
+(() => {
+
+  const galleryEl = document.getElementById("gallery");
+  const lightboxEl = document.getElementById("lightbox");
+  const lightboxCloseBtn = document.getElementById("lightboxClose");
+  const lightboxImageEl = document.getElementById("lightboxImage");
+  const lightboxCaptionEl = document.getElementById("lightboxCaption");
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  let currentIndex = 0;
+
+  const IMAGES = [
+    { src: "https://picsum.photos/id/1011/800/600", full: "https://picsum.photos/id/1011/1600/1200", alt: "Mountain lake at dusk" },
+    { src: "https://picsum.photos/id/1025/800/600", full: "https://picsum.photos/id/1025/1600/1200", alt: "Forest path with sunlight" },
+    { src: "https://picsum.photos/id/1035/800/600", full: "https://picsum.photos/id/1035/1600/1200", alt: "Snowy mountains" },
+    { src: "https://picsum.photos/id/1040/800/600", full: "https://picsum.photos/id/1040/1600/1200", alt: "Desert landscape" },
+    { src: "https://picsum.photos/id/1050/800/600", full: "https://picsum.photos/id/1050/1600/1200", alt: "Ocean waves" }
+  ];
+
+  function buildGallery() {
+    const fragment = document.createDocumentFragment();
+
+    IMAGES.forEach((img, index) => {
+      const btn = document.createElement("button");
+      btn.className = "card";
+      btn.setAttribute("data-index", index);
+
+      btn.innerHTML = `
+        <div class="card-media">
+          <img src="${img.src}" alt="${img.alt}">
+        </div>
+        <div class="card-caption">${img.alt}</div>
+      `;
+
+      fragment.appendChild(btn);
+    });
+
+    galleryEl.appendChild(fragment);
+  }
+
+  function openLightbox(imgData, index) {
+    currentIndex = index;
+
+    lightboxImageEl.src = imgData.full;
+    lightboxCaptionEl.textContent = imgData.alt;
+
+    lightboxEl.classList.add("is-open");
+    document.body.classList.add("is-lightbox-open");
+  }
+
+  function closeLightbox() {
+    lightboxEl.classList.remove("is-open");
+    document.body.classList.remove("is-lightbox-open");
+    lightboxImageEl.src = "";
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % IMAGES.length;
+    openLightbox(IMAGES[currentIndex], currentIndex);
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + IMAGES.length) % IMAGES.length;
+    openLightbox(IMAGES[currentIndex], currentIndex);
+  }
+
+  function onGalleryClick(e) {
+    const card = e.target.closest(".card");
+    if (!card) return;
+
+    const index = Number(card.getAttribute("data-index"));
+    openLightbox(IMAGES[index], index);
+  }
+
+  // EVENTS
+  galleryEl.addEventListener("click", onGalleryClick);
+  lightboxCloseBtn.addEventListener("click", closeLightbox);
+  nextBtn.addEventListener("click", showNext);
+  prevBtn.addEventListener("click", showPrev);
+
+  lightboxEl.addEventListener("click", (e) => {
+    if (e.target === lightboxEl) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (!lightboxEl.classList.contains("is-open")) return;
+
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") showNext();
+    if (e.key === "ArrowLeft") showPrev();
+  });
+
+  buildGallery();
+
+})();
